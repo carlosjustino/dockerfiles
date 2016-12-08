@@ -297,7 +297,7 @@ for profile in "${profiles_array[@]}"; do
 
     echoBold "Building docker image ${image_id}..."
 
-    build_cmd="docker build --no-cache=true \
+    build_cmd="docker build  --no-cache=true \
                 --build-arg WSO2_SERVER=\"${product_name}\" \
                 --build-arg WSO2_SERVER_VERSION=\"${product_version}\" \
                 --build-arg WSO2_SERVER_PROFILE=\"${profile}\" \

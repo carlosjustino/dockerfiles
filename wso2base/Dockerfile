@@ -1,32 +1,35 @@
-# ------------------------------------------------------------------------
-#
-# Copyright 2016 WSO2, Inc. (http://wso2.com)
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License
+FROM centos:7
+MAINTAINER Stephan Miller <stephanmil@gmail.com>
 
-# ------------------------------------------------------------------------
+RUN rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
 
-FROM ubuntu:latest
-MAINTAINER WSO2 Docker Maintainers "dev@wso2.org"
-ENV DEBIAN_FRONTEND noninteractive
+RUN yum -y install curl zip net-tools puppet iproute2; \
+  rm -rf /var/cache/yum/*; \
+  yum clean all
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends --no-install-suggests \
-                       wget \
-                       puppet \
-                       iproute2 \
-                       zip \
-                       unzip \
-                       net-tools \
-    && puppet module install puppetlabs/stdlib \
+RUN puppet module install puppetlabs/stdlib \
     && puppet module install 7terminals-java
+
+# ARG JDK_VERSION=7u80
+# ARG JDK_BUILD_VERSION=b15
+#
+# ARG MYSQL_JDBC_VERSION
+# ARG POSTGRES_JDBC_VERSION
+#
+# ENV MYSQL_JDBC_VERSION ${MYSQL_JDBC_VERSION:-5.1.39}
+# ENV POSTGRES_JDBC_VERSION ${POSTGRES_JDBC_VERSION:-9.4-1201.jdbc4}
+#
+# RUN mkdir -p /opt/utilities
+#
+# RUN curl -LO "http://download.oracle.com/otn-pub/java/jdk/$JDK_VERSION-$JDK_BUILD_VERSION/jdk-$JDK_VERSION-linux-x64.rpm" -H 'Cookie: oraclelicense=accept-securebackup-cookie'; \
+#   rpm -i jdk-$JDK_VERSION-linux-x64.rpm; rm -f jdk-$JDK_VERSION-linux-x64.rpm
+#
+# RUN curl -LOk https://jdbc.postgresql.org/download/postgresql-$POSTGRES_JDBC_VERSION.jar; \
+#   mv postgresql-$POSTGRES_JDBC_VERSION.jar /opt/utilities/
+#
+# RUN curl -LOk https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-$MYSQL_JDBC_VERSION.zip; \
+#   unzip -qq mysql-connector-java-$MYSQL_JDBC_VERSION.zip && rm -f mysql-connector-java-$MYSQL_JDBC_VERSION.zip; \
+#   mv /mysql-connector-java-$MYSQL_JDBC_VERSION/mysql-connector-java-$MYSQL_JDBC_VERSION-bin.jar /opt/utilities/; \
+#   rm -rf mysql-connector-java-$MYSQL_JDBC_VERSION
+#
+# ENV JAVA_HOME /usr/java/default

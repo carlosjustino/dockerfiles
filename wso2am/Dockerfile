@@ -16,10 +16,8 @@
 
 # ------------------------------------------------------------------------
 
-FROM wso2/wso2base:latest
-MAINTAINER dev@wso2.org
-
-ENV DEBIAN_FRONTEND noninteractive
+FROM eristoddle/wso2_centos7_base_image:latest
+MAINTAINER Stephan Miller <stephanmil@gmail.com>
 
 # Build time arguments
 ARG WSO2_SERVER

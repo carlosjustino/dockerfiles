@@ -25,11 +25,13 @@ java_home_dir=/opt/java
 
 # Add wso2user
 pushd /mnt > /dev/null
-addgroup wso2
-adduser --system --shell /bin/bash --gecos 'WSO2User' --ingroup wso2 --disabled-login wso2user
+# addgroup wso2
+# adduser --system --shell /bin/bash --comment WSO2User --ingroup wso2 --disabled-login wso2user
+groupadd wso2
+useradd -r --system --shell /bin/bash --comment WSO2User -g wso2 wso2user
 
 # WGET packs
-apt-get update && apt-get install -y unzip wget iproute2
+yum update && yum install -y unzip wget
 wget -nH -r -e robots=off --reject "index.html*" -A "jdk*.tar.gz" -nv ${HTTP_PACK_SERVER}/
 wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip
 
@@ -45,7 +47,7 @@ echo "created symlink for java: ${java_home_dir} -> ${jdk_install_dir}"
 # Cleanup
 rm -rf /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip
 rm -rf /mnt/jdk*tar.gz
-apt-get purge -y --auto-remove wget unzip
+yum remove -y wget unzip
 rm -rfv /var/lib/apt/lists/*
 chown wso2user:wso2 /usr/local/bin/*
 chown -R wso2user:wso2 /mnt
