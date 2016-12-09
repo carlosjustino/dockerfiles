@@ -89,7 +89,7 @@ function main() {
 
   echo "Creating directory ${UNIQUE_PATH}"
   mkdir -p $UNIQUE_PATH
-  echo "Creating symlink [Target] ${INSTALL_PATH}, [Link] ${UNIQUE_PATH}${SERVER_NAME}"
+  echo "Creating symlink [Target] ${INSTALL_PATH}, [Link] ${UNIQUE_PATH}/${SERVER_NAME}"
   ln -s $INSTALL_PATH "${UNIQUE_PATH}/${SERVER_NAME}"
   export CARBON_HOME="${UNIQUE_PATH}/${SERVER_NAME}"
   source /etc/profile.d/set_java_home.sh
