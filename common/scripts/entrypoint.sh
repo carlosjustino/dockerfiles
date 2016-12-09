@@ -62,7 +62,8 @@ function main() {
 
   PRGDIR=$(dirname "$0")
   SCRIPT_PATH=$(cd "$PRGDIR"; pwd)
-  export LOCAL_DOCKER_IP=$(ip route get 1 | awk '{print $NF;exit}')
+  # export LOCAL_DOCKER_IP=$(ip route get 1 | awk '{print $NF;exit}')
+  export LOCAL_DOCKER_IP=$(hostname -I | cut -d' ' -f1)
   SERVER_NAME="${WSO2_SERVER}-${WSO2_SERVER_VERSION}"
   WSO2_ARTIFACTS_DIR='/mnt/wso2-artifacts'
   INSTALL_PATH="/mnt/${SERVER_NAME}"
@@ -88,7 +89,7 @@ function main() {
 
   echo "Creating directory ${UNIQUE_PATH}"
   mkdir -p $UNIQUE_PATH
-  echo "Creating symlink [Target] ${INSTALL_PATH}, [Link] ${UNIQUE_PATH}/${SERVER_NAME}"
+  echo "Creating symlink [Target] ${INSTALL_PATH}, [Link] ${UNIQUE_PATH}${SERVER_NAME}"
   ln -s $INSTALL_PATH "${UNIQUE_PATH}/${SERVER_NAME}"
   export CARBON_HOME="${UNIQUE_PATH}/${SERVER_NAME}"
   source /etc/profile.d/set_java_home.sh
