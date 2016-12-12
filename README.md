@@ -1,7 +1,7 @@
 # WSO2 Dockerfiles
 WSO2 Dockerfiles define the resources and instructions to build the Docker images with the WSO2 products and runtime configurations.
 
-##Modifications in this fork of official repo
+## Modifications in this fork of official repo
 
 - This uses a Centos 7 base box with Java preinstalled or quicker builds instead of Ubuntu as a base. And you don't have to install Java on each instance since the base now has it installed in the base image.
 - I added a download script to the base box to download the wso2 application in the box building process. Each image's Dockerfile will execute this script to download the correct application for the box automatically on build, so you won't have to download each manually to the files folder like the original README in each folder suggests.
