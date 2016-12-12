@@ -3,7 +3,7 @@ MAINTAINER Stephan Miller <stephanmil@gmail.com>
 
 RUN rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
 
-RUN yum -y install curl zip net-tools puppet iproute2; \
+RUN yum -y install curl zip net-tools puppet iproute2 wget unzip; \
   rm -rf /var/cache/yum/*; \
   yum clean all
 

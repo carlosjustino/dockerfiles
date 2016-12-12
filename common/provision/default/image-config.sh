@@ -28,7 +28,7 @@ groupadd wso2
 useradd -r --system --shell /bin/bash --comment WSO2User -g wso2 wso2user
 
 # WGET packs
-yum update && yum install -y unzip wget
+# yum update && yum install unzip wget -y
 source /usr/local/bin/download-wso2.sh ${WSO2_SERVER} ${WSO2_SERVER_VERSION}
 
 # Setup
@@ -37,7 +37,7 @@ unzip -q /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip -d /mnt
 
 # Cleanup
 rm -rf /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip
-yum remove -y wget unzip
+# yum remove wget unzip -y
 rm -rfv /var/lib/apt/lists/*
 chown wso2user:wso2 /usr/local/bin/*
 chown -R wso2user:wso2 /mnt

@@ -51,7 +51,7 @@ done
 
 if [[ -z $product_name ]] || [[ -z $product_version ]] || [[ -z $product_profiles ]]; then
   echo "Building all images..."
-  build_image wso2am 1.10.0 "default|api-key-manager|api-publisher|api-store|gateway-manager|gateway-worker"
+  build_image wso2am 2.0.0 "default|api-key-manager|api-publisher|api-store|gateway-manager|gateway-worker"
   build_image wso2as 5.3.0 "default|worker|manager"
   build_image wso2bps 3.5.1 "default|worker|manager"
   build_image wso2brs 2.2.0 "default|worker|manager"
@@ -59,7 +59,7 @@ if [[ -z $product_name ]] || [[ -z $product_version ]] || [[ -z $product_profile
   build_image wso2das 3.0.1 default
   build_image wso2dss 3.5.0 "default|worker|manager"
   build_image wso2es 2.0.0 "default|store|publisher"
-  build_image wso2esb 4.9.0 "default|worker|manager"
+  build_image wso2esb 5.0.0 "default|worker|manager"
   build_image wso2greg 5.1.0 default
   build_image wso2greg-pubstore 5.1.0 default
   build_image wso2is 5.1.0 default
