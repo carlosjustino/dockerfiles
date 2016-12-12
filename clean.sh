@@ -32,16 +32,16 @@ function remove() {
 
 # Update the below product list and versions as required
 echoBold "Removing WSO2 docker images..."
-remove wso2am 1.10.0
+remove wso2am 2.0.0
 remove wso2as 5.3.0
-remove wso2bps 3.5.0
+remove wso2bps 3.5.1
 remove wso2brs 2.2.0
 remove wso2cep 4.1.0
 remove wso2das 3.0.1
-remove wso2dss 3.5.0
+remove wso2dss 3.5.1
 remove wso2es 2.0.0
-remove wso2esb 4.9.0
-remove wso2greg 5.1.0
-remove wso2is 5.1.0
+remove wso2esb 5.0.0
+remove wso2greg 5.3.0
+remove wso2is 5.2.0
 remove wso2mb 3.1.0
 echoSuccess "WSO2 docker images removed successfully!"
