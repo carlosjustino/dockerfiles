@@ -10,7 +10,7 @@ RUN yum -y install curl zip net-tools puppet iproute2; \
 RUN puppet module install puppetlabs/stdlib \
     && puppet module install 7terminals-java
 
-COPY ./../common/scripts/download-wso2.sh /usr/local/bin/download-wso2.sh
+COPY ./download-wso2.sh /usr/local/bin/download-wso2.sh
 RUN chmod a+x /usr/local/bin/download-wso2.sh
 
 ARG JDK_VERSION=7u80
