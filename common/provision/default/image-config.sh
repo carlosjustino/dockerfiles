@@ -20,8 +20,6 @@
 set -e
 
 # JDK version
-# jdk_install_dir=/mnt/jdk-7u80
-# java_home_dir=/opt/java
 java_home_dir=/usr/java/default
 
 # Add wso2user
@@ -30,23 +28,19 @@ groupadd wso2
 useradd -r --system --shell /bin/bash --comment WSO2User -g wso2 wso2user
 
 # WGET packs
-yum update && yum install -y unzip wget
-# wget -nH -r -e robots=off --reject "index.html*" -A "jdk*.tar.gz" -nv ${HTTP_PACK_SERVER}/
-wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip
+# yum update && yum install -y unzip wget
+# wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip
+yum update && yum install -y unzip
+source /usr/local/bin/download-wso2.sh ${WSO2_SERVER} ${WSO2_SERVER_VERSION}
 
 # Setup
 echo "unpacking ${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip to /mnt"
 unzip -q /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip -d /mnt
-# mkdir -p ${jdk_install_dir}
-# echo "unpacking the JDK to ${jdk_install_dir}"
-# tar -xf /mnt/jdk*tar.gz -C ${jdk_install_dir} --strip-components=1
-# ln -s ${jdk_install_dir} ${java_home_dir}
-# echo "created symlink for java: ${java_home_dir} -> ${jdk_install_dir}"
 
 # Cleanup
 rm -rf /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip
-# rm -rf /mnt/jdk*tar.gz
-yum remove -y wget unzip
+# yum remove -y wget unzip
+yum remove -y unzip
 rm -rfv /var/lib/apt/lists/*
 chown wso2user:wso2 /usr/local/bin/*
 chown -R wso2user:wso2 /mnt
