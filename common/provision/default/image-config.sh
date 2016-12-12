@@ -37,8 +37,7 @@ unzip -q /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip -d /mnt
 
 # Cleanup
 rm -rf /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip
-# yum remove -y wget unzip
-yum remove -y unzip
+yum remove -y wget unzip
 rm -rfv /var/lib/apt/lists/*
 chown wso2user:wso2 /usr/local/bin/*
 chown -R wso2user:wso2 /mnt
