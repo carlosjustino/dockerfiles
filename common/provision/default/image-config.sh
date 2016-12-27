@@ -36,11 +36,13 @@ unzip -q /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip -d /mnt
 
 #Mysql Driver
 wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/mysql-connector-java-5.1.38-bin.jar
-mkdir -p /opt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/
-mv /mnt/mysql-connector-java-5.1.38-bin.jar /opt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
+# mkdir -p /opt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/
+# mv /mnt/mysql-connector-java-5.1.38-bin.jar /opt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
+mv /mnt/mysql-connector-java-5.1.38-bin.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
 
 # Symbolic link without version number
-ln -sf /opt/${WSO2_SERVER}-${WSO2_SERVER_VERSION} /opt/${WSO2_SERVER}
+# ln -sf /opt/${WSO2_SERVER}-${WSO2_SERVER_VERSION} /opt/${WSO2_SERVER}
+ln -sf /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION} /mnt/${WSO2_SERVER}
 
 # Cleanup
 rm -rf /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip
