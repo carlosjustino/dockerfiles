@@ -39,13 +39,13 @@ wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/mysql-conn
 mv /mnt/mysql-connector-java-5.1.38-bin.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
 
 #Sql Server and Postgres Drivers for DSS
-if [ $WSO2_SERVER = "wso2dss" ]; then
+# if [ $WSO2_SERVER = "wso2dss" ]; then
     wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/jtds-1.3.1.jar
     mv /mnt/jtds-1.3.1.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/jtds-1.3.1.jar
 
     wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/postgresql-9.4.1212.jre6.jar
     mv /mnt/postgresql-9.4.1212.jre6.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/postgresql-9.4.1212.jre6.jar
-fi
+# fi
 
 # Symbolic link without version number
 ln -sf /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION} /mnt/${WSO2_SERVER}
