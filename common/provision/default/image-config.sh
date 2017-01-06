@@ -56,8 +56,12 @@ rm -rfv /var/lib/apt/lists/*
 chown wso2user:wso2 /usr/local/bin/*
 chown -R wso2user:wso2 /mnt
 
-#Fix java lock error SEE: http://stackoverflow.com/questions/21000145/wso2-governance-registry-lock-error
-chown -R wso2user:wso2 /etc/.java/.systemPrefs
+# Fix java lock error
+# SEE: http://stackoverflow.com/questions/23960451/java-system-preferences-under-different-users-in-linux
+mkdir -p /home/wso2user/.java/.systemPrefs
+mkdir /home/wso2user/.java/.userPrefs
+chmod -R 755 /home/wso2user/.java
+export JAVA_OPTS="-Djava.util.prefs.systemRoot=/home/wso2user/.java -Djava.util.prefs.userRoot=/home/wso2user/.java/.userPrefs"
 
 # Setup environment variables
 cat > /etc/profile.d/set_java_home.sh << EOF
