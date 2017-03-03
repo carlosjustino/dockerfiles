@@ -16,7 +16,7 @@
 
 # ------------------------------------------------------------------------
 
-FROM eristoddle/720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2base:latest
+FROM 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2base:latest
 MAINTAINER Stephan Miller <stephanmil@gmail.com>
 
 # Build time arguments
