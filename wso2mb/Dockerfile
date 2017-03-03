@@ -16,7 +16,7 @@
 
 # ------------------------------------------------------------------------
 
-FROM eristoddle/wso2_centos7_base_image:latest
+
 MAINTAINER stephanmil@gmail.com
 
 
