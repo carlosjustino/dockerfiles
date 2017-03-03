@@ -16,7 +16,7 @@
 
 # ------------------------------------------------------------------------
 
-FROM eristoddle/wso2_centos7_base_image:latest
+FROM eristoddle/720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2base:latest
 MAINTAINER stephanmil@gmail.com
 
 
