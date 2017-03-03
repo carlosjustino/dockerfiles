@@ -23,4 +23,5 @@ self_path=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "${self_path}/../common/scripts/base.sh"
 
 echoBold "Building docker base image..."
-docker build -t wso2/wso2base ${self_path}
+# Commented out for jenkins build
+# docker build -t eristoddle/wso2base ${self_path}
