@@ -16,6 +16,29 @@
 # limitations under the License
 
 # ------------------------------------------------------------------------
+
+#
+# Docker API functions for unix socket connection
+#
+build_cmd="docker build  --no-cache=true \
+            --build-arg WSO2_SERVER=\"${product_name}\" \
+            --build-arg WSO2_SERVER_VERSION=\"${product_version}\" \
+            --build-arg WSO2_SERVER_PROFILE=\"${profile}\" \
+            --build-arg WSO2_ENVIRONMENT=\"${product_env}\" \
+            --build-arg HTTP_PACK_SERVER=\"${http_server_address}\" \
+            --build-arg PLATFORM=\"${platform}\" \
+            -t \"${image_id}\" \"${dockerfile_path}\""
+
+function buildDockerImage() {
+    # tar project
+
+    # Make docker api call
+    curl --unix-socket /var/run/docker.sock -H "Content-Type: application/json" \
+        --data-binary  \
+        -X POST "http:/v1.24/build?nocache=true&buildargs="
+}
+
+
 function cleanup() {
   echoBold "Cleaning..."
   rm -rf "$dockerfile_path/scripts"
@@ -198,10 +221,11 @@ popd > /dev/null 2>&1
 
 # validate docker version against minimum required docker version
 # docker_version=$(docker version --format '{{.Server.Version}}')
-docker_version=$(docker version)
-docker_version=$(echo "$docker_version" | grep 'Version:' | awk '{print $2}')
-min_required_docker_version=1.10.0
-validateDockerVersion "${docker_version}" "${min_required_docker_version}"
+# Not checking this now for socket usage
+# docker_version=$(getDockerVersion)
+# docker_version=$(echo "$docker_version" | grep 'Version:' | awk '{print $2}')
+# min_required_docker_version=1.10.0
+# validateDockerVersion "${docker_version}" "${min_required_docker_version}"
 
 # Copy common files to Dockerfile context
 echoBold "Creating Dockerfile context..."
@@ -275,7 +299,11 @@ for profile in "${profiles_array[@]}"; do
 
   image_id="${image_name_section}:${image_version_section}"
 
-  image_exists=$(docker images $image_id | wc -l)
+  # Let's not worry about this
+  # image_exists=$(docker images $image_id | wc -l)
+  image_exists="1"
+  overwrite_v="y"
+
   if [[ ${image_exists} -eq 2 ]] && [[ $overwrite_v != "y" ]]; then
     if [ $verbose == false ]; then
       overwrite_v='y';
@@ -296,6 +324,8 @@ for profile in "${profiles_array[@]}"; do
     fi
 
     echoBold "Building docker image ${image_id}..."
+
+    echo pwd
 
     build_cmd="docker build  --no-cache=true \
                 --build-arg WSO2_SERVER=\"${product_name}\" \
