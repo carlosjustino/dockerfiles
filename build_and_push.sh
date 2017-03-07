@@ -37,13 +37,13 @@ if [[ -z $product_name ]] || [[ -z $product_version ]] || [[ -z $product_profile
   echo "Building all images..."
   build_image wso2am 2.0.0 default
   # build_image wso2am 2.0.0 "default|api-key-manager|api-publisher|api-store|gateway-manager|gateway-worker"
-  docker tag wso2am:2.0.0 eristoddle/wso2am:2.0.0
-  docker push eristoddle/wso2am:2.0.0
+  docker tag wso2am:2.0.0 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2am:2.0.0
+  docker push 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2am:2.0.0
 
   # build_image wso2as 5.3.0 "default|worker|manager"
-  build_image wso2as 5.3.0 default
-  docker tag wso2as:5.3.0 eristoddle/wso2as:5.3.0
-  docker push eristoddle/wso2as:5.3.0
+  # build_image wso2as 5.3.0 default
+  # docker tag wso2as:5.3.0 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2as:5.3.0
+  # docker push 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2as:5.3.0
 
   # build_image wso2bps 3.5.1 "default|worker|manager"
 
@@ -53,25 +53,25 @@ if [[ -z $product_name ]] || [[ -z $product_version ]] || [[ -z $product_profile
 
   # build_image wso2dss 3.5.1 "default|worker|manager"
   build_image wso2dss 3.5.1 default
-  docker tag wso2dss:3.5.1 eristoddle/wso2dss:3.5.1
-  docker push eristoddle/wso2dss:3.5.1
+  docker tag wso2dss:3.5.1 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2dss:3.5.1
+  docker push 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2dss:3.5.1
 
   # build_image wso2es 2.0.0 "default|store|publisher"
 
   # build_image wso2esb 5.0.0 "default|worker|manager"
   build_image wso2esb 5.0.0 default
-  docker tag wso2esb:5.0.0 eristoddle/wso2esb:5.0.0
-  docker push eristoddle/wso2esb:5.0.0
+  docker tag wso2esb:5.0.0 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2esb:5.0.0
+  docker push 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2esb:5.0.0
 
   build_image wso2greg 5.3.0 default
-  docker tag wso2greg:5.3.0 eristoddle/wso2greg:5.3.0
-  docker push eristoddle/wso2greg:5.3.0
+  docker tag wso2greg:5.3.0 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2greg:5.3.0
+  docker push 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2greg:5.3.0
 
   # build_image wso2greg-pubstore 5.3.0 default
 
   build_image wso2is 5.2.0 default
-  docker tag wso2is:5.2.0 eristoddle/wso2is:5.2.0
-  docker push eristoddle/wso2is:5.2.0
+  docker tag wso2is:5.2.0 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2is:5.2.0
+  docker push 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2is:5.2.0
 
   # build_image wso2is-km 5.2.0 default
 
