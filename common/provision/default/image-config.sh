@@ -47,6 +47,12 @@ mv /mnt/mysql-connector-java-5.1.38-bin.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VE
     mv /mnt/postgresql-9.4.1212.jre6.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/postgresql-9.4.1212.jre6.jar
 # fi
 
+# API import export tool
+if [ $WSO2_SERVER = "wso2am" ]; then
+    wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/api-import-export-2.0.0-v0.war
+    mv /mnt/api-import-export-2.0.0-v0.war /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps/api-import-export-2.0.0-v0.war
+fi
+
 # Symbolic link without version number
 ln -sf /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION} /mnt/${WSO2_SERVER}
 
