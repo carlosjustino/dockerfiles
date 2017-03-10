@@ -35,10 +35,10 @@ done
 
 if [[ -z $product_name ]] || [[ -z $product_version ]] || [[ -z $product_profiles ]]; then
   echo "Building all images..."
-  build_image wso2am 2.0.0 default
+  build_image wso2am 2.1.0 default
   # build_image wso2am 2.0.0 "default|api-key-manager|api-publisher|api-store|gateway-manager|gateway-worker"
-  docker tag wso2am:2.0.0 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2am:2.0.0
-  docker push 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2am:2.0.0
+  docker tag wso2am:2.1.0 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2am:2.1.0
+  docker push 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2am:2.1.0
 
   # build_image wso2as 5.3.0 "default|worker|manager"
   # build_image wso2as 5.3.0 default
