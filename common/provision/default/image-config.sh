@@ -36,15 +36,15 @@ unzip -q /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip -d /mnt
 
 #Mysql Driver
 wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/mysql-connector-java-5.1.38-bin.jar
-mv /mnt/mysql-connector-java-5.1.38-bin.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
+mv /mnt/mysql-connector-java-5.1.38-bin.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/connector-java-5.1.38-bin.jar
 
 #Sql Server and Postgres Drivers for DSS
 # if [ $WSO2_SERVER = "wso2dss" ]; then
     wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/jtds-1.3.1.jar
     mv /mnt/jtds-1.3.1.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/jtds-1.3.1.jar
 
-    wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/mssql-jdbc-6.1.0.jre8.jar
-    mv /mnt/mssql-jdbc-6.1.0.jre8.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/mssql-jdbc-6.1.0.jre8.jar
+    wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/mssql-jdbc-6.1.0.jre7.jar
+    mv /mnt/mssql-jdbc-6.1.0.jre7.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/mssql-jdbc-6.1.0.jre7.jar
 
     wget -nH -e robots=off --reject "index.html*" -nv ${HTTP_PACK_SERVER}/postgresql-9.4.1212.jre6.jar
     mv /mnt/postgresql-9.4.1212.jre6.jar /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/postgresql-9.4.1212.jre6.jar
