@@ -69,9 +69,9 @@ if [[ -z $product_name ]] || [[ -z $product_version ]] || [[ -z $product_profile
 
   # build_image wso2greg-pubstore 5.3.0 default
 
-  build_image wso2is 5.2.0 default
-  docker tag wso2is:5.2.0 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2is:5.2.0
-  docker push 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2is:5.2.0
+  build_image wso2is 5.3.0 default
+  docker tag wso2is:5.3.0 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2is:5.3.0
+  docker push 720847110369.dkr.ecr.us-west-2.amazonaws.com/bardavon/docker/wso2/wso2is:5.3.0
 
   # build_image wso2is-km 5.2.0 default
 
